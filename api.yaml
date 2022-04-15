@@ -1,0 +1,110 @@
+openapi: 3.0.0
+
+info:
+  title: Test Service
+  description: All API doc for form service
+  version: 1.0.0
+  contact:
+    name: Example
+    email: example@example.com
+servers:
+  - url: http://localhost:5000/
+    description: localhost server
+tags:
+   - name: Bank
+    description: Bank Routes
+paths:
+  /bank/addBank:
+    post:
+      tags: 
+        - Bank
+      description: Add Bank by Admin
+      summary: admin route
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: 
+                  type: string
+                account:
+                  type: string
+                bank_name: 
+                  type: string
+      responses:
+        201:
+          description: Bank Add Succesfully
+          content:
+            application/json:
+              schema:
+                type: string
+        default: 
+          description: ok
+
+  /bank/banks:
+    get:
+      tags:
+        - Bank
+      description: Get all bank details
+      summary: All User
+      responses:
+        200:
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: string
+                required: true
+        default:
+          description: OK      
+
+  /bank/banks/delete/{id}:
+    delete:
+      tags:
+        - Bank
+      description: Delete bank with bank id
+      summary: Admin Route
+      # security:
+      #   - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: bank id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: OK
+  /banks/update/{id}:
+    patch:
+      tags:
+        - Bank
+      description: Pass only those key value that you want to edit
+      summary: Admin Route
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: banks id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                account:
+                  type: string
+                bank_name:
+                  type: string
+      responses:
+        default:
+          description: OK
