@@ -11,7 +11,7 @@ servers:
   - url: http://localhost:5000/
     description: localhost server
 tags:
-   - name: Bank
+  - name: Bank
     description: Bank Routes
 paths:
   /bank/addBank:
@@ -74,7 +74,7 @@ paths:
           description: bank id
           schema:
             type: string
-            format: uuid
+            # format: uuid
       responses:
         default:
           description: OK
@@ -91,7 +91,7 @@ paths:
           description: banks id
           schema:
             type: string
-            format: uuid
+            # format: uuid
       requestBody:
         required: true
         content:
